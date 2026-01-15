@@ -17,10 +17,11 @@ function AboutBanner() {
             <span className="uppercase">about us</span>
 
             <div className="mt-6">
-              <h2 className="sm:text-5xl font-bold">
+              <h2 className="sm:text-4xl font-bold">
                 Chart Your Path to Success with Expert Surveys &
                 Engineering Precision
               </h2>
+              {/* <p className="mt-3"> */}
               <p className="mt-3">
                 At APEX Consulting & Surveying, Inc., we provide the
                 expert guidance you need to ensure your construction

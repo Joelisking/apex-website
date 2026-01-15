@@ -5,36 +5,39 @@ import { surveyingBenefits } from './surveying-data';
 
 function SurveyingSection() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="">
       <Container>
-        <SectionHeader size="lg" className="mb-2">
+        <SectionHeader size="base" className="mb-1">
           Surveying
         </SectionHeader>
-        <p className="text-lg italic text-gray-700 mb-4">
+        <p className="text-2xl italic font-medium mb-2">
           Trusted Surveying Services In{' '}
-          <span className="text-primary not-italic">
+          <span className="text-primary">
             Northeast Indiana Since 2004
           </span>
         </p>
-        <p className="text-gray-600 leading-relaxed mb-8 max-w-4xl">
-          Apex Consulting and Surveying has provided surveying services in northeast
-          Indiana since 2004. Our surveying services include topographic and boundary
-          surveys. Our Land Surveying service includes boundary surveys, topographic
-          survey, subsurface utility engineering (SUE) survey, construction staking
-          and LiDar Drone survey.
+        <p className="text-xl leading-relaxed mb-4">
+          Apex Consulting and Surveying has provided surveying
+          services in northeast Indiana since 2004. Our surveying
+          services include topographic and boundary surveys. Our Land
+          Surveying service includes boundary surveys, topographic
+          survey, subsurface utility engineering (SUE) survey,
+          construction staking and LiDar Drone survey.
         </p>
 
         {/* Blockquote */}
-        <blockquote className="border-l-4 border-primary pl-6 py-2 mb-10 bg-gray-50 rounded-r-lg">
-          <p className="text-gray-700 leading-relaxed">
-            Apex Is Certified To Use Unmanned Aviation Vehicles (UAV) Or Lidar Drones
-            For Surveying. Our LiDAR Drone Surveying Service Is Our New Innovative
-            Surveying Equipment. LiDAR, Or Light Detection And Ranging, Uses A Laser
-            Pulse To Create The Earth&apos;s Surface. LiDAR Drones Are Typical Drones That
-            Are Made To Carry A LiDAR Sensor. They Are Used To Collect Surface Data
-            That Can Be Used To Create Detailed 3D Models For Many Applications And
-            Industries, Such As Agriculture, Forestry, Archaeology, Mining, Insurance,
-            Construction, Inspection, And Transportation.
+        <blockquote className="border-l-4 border-primary pl-6 py-2 mb-5 bg-gray-50 rounded-r-lg">
+          <p className="text-gray-700 leading-relaxed text-xl">
+            Apex Is Certified To Use Unmanned Aviation Vehicles (UAV)
+            Or Lidar Drones For Surveying. Our LiDAR Drone Surveying
+            Service Is Our New Innovative Surveying Equipment. LiDAR,
+            Or Light Detection And Ranging, Uses A Laser Pulse To
+            Create The Earth&apos;s Surface. LiDAR Drones Are Typical
+            Drones That Are Made To Carry A LiDAR Sensor. They Are
+            Used To Collect Surface Data That Can Be Used To Create
+            Detailed 3D Models For Many Applications And Industries,
+            Such As Agriculture, Forestry, Archaeology, Mining,
+            Insurance, Construction, Inspection, And Transportation.
           </p>
         </blockquote>
 

@@ -9,12 +9,12 @@ function ProcessSection() {
       <Container>
         {/* Section Header */}
         <div className="mb-12 md:mb-16">
-          <SectionHeader highlightedWord="Process" size="lg">
+          <SectionHeader highlightedWord="Process" size="base">
             Our Process
           </SectionHeader>
-          <p className="text-gray-600 mt-4 max-w-2xl">
-            Precision-driven surveying and engineering, guiding your project from
-            start to finish with ease.
+          <p className="text-xl leading-relaxed mb-4">
+            Precision-driven surveying and engineering, guiding your
+            project from start to finish with ease.
           </p>
         </div>
 

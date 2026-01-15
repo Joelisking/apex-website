@@ -5,22 +5,29 @@ import { rightOfWayServices } from './row-data';
 
 function RightOfWaySection() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="mt-16 md:mt-24">
       <Container>
-        <SectionHeader highlightedWord="Right-Of-Way" size="lg" className="mb-2">
+        <SectionHeader
+          highlightedWord="Right-Of-Way"
+          size="base"
+          className="mb-1">
           Right-Of-Way Engineering
         </SectionHeader>
-        <p className="text-lg italic text-gray-700 mb-4">
+        <p className="text-2xl italic font-medium mb-2">
           Proven Right-Of-Way Engineering For{' '}
-          <span className="text-primary not-italic">State And Local Projects</span>
+          <span className="text-primary">
+            State And Local Projects
+          </span>
         </p>
-        <p className="text-gray-600 leading-relaxed mb-10 max-w-4xl">
-          With a strong track record, APEX has completed numerous right-of-way
-          projects for the Indiana Department of Transportation (INDOT) and various
-          local public agencies. Our expertise allows us to navigate the complexities
-          of these projects, ensuring precision and compliance at every stage. Whether
-          working on large-scale state initiatives or local public works, APEX brings
-          exceptional skill and dedication to each project. Our Right-of-Way-Engineering
+        <p className="text-xl leading-relaxed mb-4">
+          With a strong track record, APEX has completed numerous
+          right-of-way projects for the Indiana Department of
+          Transportation (INDOT) and various local public agencies.
+          Our expertise allows us to navigate the complexities of
+          these projects, ensuring precision and compliance at every
+          stage. Whether working on large-scale state initiatives or
+          local public works, APEX brings exceptional skill and
+          dedication to each project. Our Right-of-Way-Engineering
           services include:
         </p>
 

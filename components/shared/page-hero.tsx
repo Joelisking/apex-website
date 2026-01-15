@@ -4,15 +4,23 @@ import Image from 'next/image';
 import img from '@/public/LooperGroup.svg';
 import Link from 'next/link';
 
+export interface Stat {
+  value: string;
+  label: string;
+}
+
 interface PageHeroProps {
   title: string;
   description: string;
+  stats?: Stat[];
 }
 
-function PageHero({ title, description }: PageHeroProps) {
+function PageHero({ title, description, stats }: PageHeroProps) {
   return (
-    <section data-navbar-theme="dark" className="bg-linear-to-r from-[#313131] via-[#000000] to-[#222222] text-white py-8 md:py-16 relative overflow-hidden ">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-16 lg:py-20 xl:py-32">
+    <section
+      data-navbar-theme="dark"
+      className="bg-linear-to-r from-[#313131] via-[#000000] to-[#222222] text-white relative overflow-hidden">
+      <div className={`max-w-7xl mx-auto px-4 md:px-6 py-16 ${stats && stats.length > 0 ? 'md:py-20 lg:py-28 xl:py-32' : 'md:py-28 lg:py-36 xl:py-44'}`}>
         {/* Desktop version - original layout */}
         <div className="hidden md:block relative z-20">
           <div className="w-4/5">
@@ -20,7 +28,7 @@ function PageHero({ title, description }: PageHeroProps) {
               <h2 className="sm:text-5xl lg:text-6xl font-bold">
                 {title}
               </h2>
-              <p className="mt-3">{description}</p>
+              <p className="mt-3 max-w-3xl">{description}</p>
             </div>
           </div>
           <Link
@@ -35,21 +43,12 @@ function PageHero({ title, description }: PageHeroProps) {
 
         {/* Mobile version - optimized layout */}
         <div className="md:hidden relative z-20">
-          <div className="w-4/5 sm:w-3/4">
-            <span className="uppercase font-semibold">
-              how can we help you
-            </span>
-
+          <div className="w-full">
             <div className="mt-4">
               <h2 className="text-3xl sm:text-4xl font-bold">
-                Welcome To Alabaster Car Rentals and Tours Ltd.
+                {title}
               </h2>
-              <p className="mt-3 text-sm">
-                We offer chauffer driven car rentals, corporate
-                shuttle services and tours in Ghana. We operate a vast
-                fleet of vehicles ranging from sedans, SUVs, mini-vans
-                and buses.
-              </p>
+              <p className="mt-3 text-sm">{description}</p>
             </div>
           </div>
           <Link
@@ -61,10 +60,28 @@ function PageHero({ title, description }: PageHeroProps) {
             </Button>
           </Link>
         </div>
+
+        {/* Stats - shown at bottom if provided */}
+        {stats && stats.length > 0 && (
+          <div className="relative z-20 mt-12 md:mt-16 pt-4 border-t border-white/20 max-w-4xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center md:text-left">
+                  <div className="text-3xl md:text-4xl font-light text-primary">
+                    {stat.value}
+                  </div>
+                  <div className="text-white/70 text-sm mt-1">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Image - absolute positioned for both mobile and desktop */}
-      <div className="absolute top-0 bottom-0 right-0 h-full w-full ">
+      <div className="absolute top-0 bottom-0 right-0 h-full w-full">
         <div className="relative h-full w-full">
           <Image
             src={img}

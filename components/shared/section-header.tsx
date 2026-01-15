@@ -17,7 +17,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   const sizeVariants = {
     sm: 'text-xl sm:text-2xl',
     md: 'text-2xl sm:text-3xl',
-    base: 'text-3xl sm:text-4xl lg:text-5xl',
+    base: 'text-3xl sm:text-4xl',
     lg: 'text-4xl sm:text-5xl lg:text-6xl',
     xl: 'text-5xl sm:text-6xl lg:text-7xl',
   };

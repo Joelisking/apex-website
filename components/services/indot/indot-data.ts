@@ -23,7 +23,7 @@ export const indotWorkTypes: IndotWorkType[] = [
   {
     code: '3.1',
     title: 'Construction Inspection',
-    image: '/services/indot-4.png',
+    image: '/services/indot3.1.png',
   },
   {
     code: '16.1',

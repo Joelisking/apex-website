@@ -8,7 +8,7 @@ interface Stat {
 const stats: Stat[] = [
   { value: '100+', label: 'INDOT Projects Completed' },
   { value: '20+', label: 'Years of Experience' },
-  { value: '150+', label: 'Years Combined Expertise' },
+  { value: '50+', label: 'Clients Served' },
   { value: '50+', label: 'LPA Projects Delivered' },
 ];
 

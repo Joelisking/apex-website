@@ -22,13 +22,13 @@ function ProcessStep({ data, reversed = false }: ProcessStepProps) {
       } gap-8 md:gap-12 lg:gap-16 items-center`}>
       {/* Text Content */}
       <div className="flex-1">
-        <span className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary">
+        <span className="text-6xl md:text-7xl lg:text-8xl font-medium text-primary">
           {stepNumber}
         </span>
-        <h3 className="text-xl md:text-2xl font-bold mt-4 mb-4">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mt-4 mb-4">
           {title}
         </h3>
-        <p className="text-gray-600 leading-relaxed">{description}</p>
+        <p className="text-xl leading-relaxed mb-4">{description}</p>
       </div>
 
       {/* Image */}
