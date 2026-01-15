@@ -5,16 +5,20 @@ import { officeLocations } from './locations-data';
 
 function LocationsSection() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="mt-16 md:mt-24">
       <Container>
-        <SectionHeader highlightedWord="Locations" size="lg" className="mb-4">
+        <SectionHeader
+          highlightedWord="Locations"
+          size="base"
+          className="mb-1">
           Office Locations
         </SectionHeader>
-        <p className="text-gray-600 leading-relaxed mb-10 max-w-4xl">
-          Our Main Office Is Located In The City Of Fort Wayne And Has Been
-          Providing Professional Surveying And Engineering Services For The Northern
-          State Of Indiana Region. We Recently Opened A Branch Office On The North
-          Side Of The City Of Indianapolis, Which Will Aim To Service The Central
+        <p className="text-lg leading-relaxed mb-4">
+          Our Main Office Is Located In The City Of Fort Wayne And Has
+          Been Providing Professional Surveying And Engineering
+          Services For The Northern State Of Indiana Region. We
+          Recently Opened A Branch Office On The North Side Of The
+          City Of Indianapolis, Which Will Aim To Service The Central
           Indiana Region.
         </p>
 

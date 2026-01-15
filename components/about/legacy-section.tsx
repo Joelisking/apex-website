@@ -11,19 +11,19 @@ const bulletPoints = [
 
 function LegacySection() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="mt-16 md:mt-24">
       <Container>
         {/* Heading */}
         <SectionHeader
           highlightedWord="Legacy Of Excellence"
-          size="lg"
-          className="mb-6">
+          size="base"
+          className="mb-2 max-w-4xl">
           Building On A Legacy Of Excellence In Surveying And
           Engineering
         </SectionHeader>
 
         {/* Introduction Paragraph */}
-        <p className="text-gray-700 leading-relaxed mb-10 max-w-5xl">
+        <p className="text-lg leading-relaxed">
           Apex Consulting And Surveying, Inc. (APEX) Was Founded In
           2004 Under The Name Of McCrea Land Surveying, Inc., Which Is
           Already Known For Providing Excellent Topographical And
@@ -37,18 +37,13 @@ function LegacySection() {
         </p>
 
         {/* Content Grid */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start mt-12">
           {/* Bullet Points */}
           <div className="flex-1">
-            <ul className="space-y-6">
+            <ul className="space-y-6 list-disc pl-4">
               {bulletPoints.map((point, index) => (
-                <li key={index} className="flex gap-3">
-                  <span className="text-primary mt-1.5 text-xl">
-                    •
-                  </span>
-                  <span className="text-gray-700 leading-relaxed">
-                    {point}
-                  </span>
+                <li key={index} className="text-lg leading-relaxed">
+                  {point}
                 </li>
               ))}
             </ul>

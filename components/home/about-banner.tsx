@@ -50,7 +50,7 @@ function AboutBanner() {
               Your Trusted Partner for Expert Surveying & Engineering
               Solutions
             </SectionHeader>
-            <p className="text-gray-600 leading-relaxed mb-6">
+            <p className="text-gray-600 leading-relaxed mb-6 text-lg">
               At APEX Consulting & Surveying, Inc., we provide the
               expert guidance you need to ensure your construction
               project runs smoothly from start to finish. Whether
