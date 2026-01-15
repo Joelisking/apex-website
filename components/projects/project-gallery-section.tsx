@@ -103,18 +103,18 @@ function ProjectGallerySection() {
     <>
       <section className="bg-zinc-50 py-16 md:py-24">
         <Container>
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-8 md:mb-10">
-            <div className="max-w-2xl">
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-4">
+            <div className="max-w-4xl">
               <SectionHeader
                 size="base"
                 highlightedWord="Gallery"
-                className="mb-3">
-                Project Gallery
+                className="mb-1">
+                Our Gallery
               </SectionHeader>
-              <p className="text-sm md:text-base text-zinc-600">
+              <p className="text-lg leading-relaxed">
                 A closer look at a few of the roadway, streetscape,
-                and trail projects APEX has supported across
-                Indiana—from reconstruction and safety upgrades to
+                and trail projects APEX has supported across Indiana.
+                From reconstruction and safety upgrades to
                 ADA-compliant pedestrian connections.
               </p>
             </div>

@@ -25,7 +25,7 @@ function TeamSection() {
           Target.&quot;
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
           {teamMembers.map((member, index) => (
             <TeamMemberCard key={index} member={member} />
           ))}

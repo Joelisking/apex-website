@@ -26,7 +26,7 @@ function ContactCTA() {
       <Container className="relative z-10">
         <div className="flex flex-col lg:flex-row justify-between gap-10">
           {/* Left column: message */}
-          <div className="w-1/2">
+          <div className="w-full lg:w-1/2">
             <span className="text-white/70 uppercase tracking-wide text-xs md:text-sm font-semibold">
               Contact APEX
             </span>
@@ -74,7 +74,7 @@ function ContactCTA() {
           </div>
 
           {/* Right column: quick contact options */}
-          <div className="rounded-2xl bg-black/40 border border-white/10 backdrop-blur-sm p-5 md:p-6 lg:p-7 w-1/2">
+          <div className="rounded-2xl bg-black/40 border border-white/10 backdrop-blur-sm p-4 md:p-6 lg:p-7 w-full lg:w-1/2">
             <h3 className="text-lg md:text-xl font-semibold">
               How we can help
             </h3>

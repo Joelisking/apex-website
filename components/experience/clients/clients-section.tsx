@@ -13,7 +13,7 @@ function ClientsSection() {
           className="mb-1">
           Our Clients
         </SectionHeader>
-        <p className="text-xl leading-relaxed mb-4 w-3/4">
+        <p className="text-base md:text-xl leading-relaxed mb-4 w-full md:w-3/4">
           We&apos;re proud to partner with state agencies, engineering
           firms, and contractors across Indiana, delivering excellence
           on every project.

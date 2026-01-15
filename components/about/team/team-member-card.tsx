@@ -8,7 +8,7 @@ interface TeamMemberCardProps {
 function TeamMemberCard({ member }: TeamMemberCardProps) {
   return (
     <div className="text-center">
-      <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden mb-4">
+      <div className="relative aspect-square w-full rounded-full overflow-hidden mb-4">
         <Image
           src={member.image}
           alt={member.name}

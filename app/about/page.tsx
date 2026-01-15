@@ -1,6 +1,6 @@
 import LegacySection from '@/components/about/legacy-section';
 import { LocationsSection } from '@/components/about/locations';
-import { TeamSection } from '@/components/about/team';
+import { TeamSection, TeamSectionAlt } from '@/components/about/team';
 import PageHero from '@/components/shared/page-hero';
 
 function AboutPage() {
@@ -12,6 +12,7 @@ function AboutPage() {
       />
       <LegacySection />
       <TeamSection />
+      <TeamSectionAlt />
       <LocationsSection />
     </main>
   );

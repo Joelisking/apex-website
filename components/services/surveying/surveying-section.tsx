@@ -10,13 +10,13 @@ function SurveyingSection() {
         <SectionHeader size="base" className="mb-1">
           Surveying
         </SectionHeader>
-        <p className="text-2xl italic font-medium mb-2">
+        <p className="text-lg md:text-2xl italic font-medium mb-2">
           Trusted Surveying Services In{' '}
           <span className="text-primary">
             Northeast Indiana Since 2004
           </span>
         </p>
-        <p className="text-xl leading-relaxed mb-4">
+        <p className="text-base md:text-xl leading-relaxed mb-4">
           Apex Consulting and Surveying has provided surveying
           services in northeast Indiana since 2004. Our surveying
           services include topographic and boundary surveys. Our Land
@@ -27,7 +27,7 @@ function SurveyingSection() {
 
         {/* Blockquote */}
         <blockquote className="border-l-4 border-primary pl-6 py-2 mb-5 bg-gray-50 rounded-r-lg">
-          <p className="text-gray-700 leading-relaxed text-xl">
+          <p className="text-gray-700 leading-relaxed text-base md:text-xl">
             Apex Is Certified To Use Unmanned Aviation Vehicles (UAV)
             Or Lidar Drones For Surveying. Our LiDAR Drone Surveying
             Service Is Our New Innovative Surveying Equipment. LiDAR,

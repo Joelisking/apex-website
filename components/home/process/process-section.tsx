@@ -12,7 +12,7 @@ function ProcessSection() {
           <SectionHeader highlightedWord="Process" size="base">
             Our Process
           </SectionHeader>
-          <p className="text-xl w-4/5">
+          <p className="text-base md:text-xl w-full md:w-4/5">
             From initial surveys to final construction staking, our
             proven four-step process ensures your project is completed
             with accuracy, on time, and within budget.

@@ -40,13 +40,13 @@ function AboutBanner() {
 
           {/* Content Side */}
           <div className="flex-1">
-            <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block text-primary font-medium mb-1">
               About Us
             </span>
             <SectionHeader
               highlightedWord="Engineering Solutions"
               size="base"
-              className="mb-4">
+              className="mb-2">
               Your Trusted Partner for Expert Surveying & Engineering
               Solutions
             </SectionHeader>

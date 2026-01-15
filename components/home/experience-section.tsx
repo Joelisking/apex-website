@@ -19,8 +19,8 @@ function ExperienceSection() {
             Trusted Expertise Backed By Decades Of Successful Projects
           </SectionHeader>
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-            <div className="w-1/2">
-              <p className="text-xl leading-relaxed mb-4">
+            <div className="w-full md:w-1/2">
+              <p className="text-base md:text-lg lg:text-xl leading-relaxed mb-4">
                 With over 20 years of experience, APEX Consulting &
                 Surveying, Inc. has successfully completed a wide
                 range of projects for clients such as the Indiana

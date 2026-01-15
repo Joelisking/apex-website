@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Project } from './project-data';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 
 interface ProjectCardProps {
   project: Project;
@@ -11,14 +12,17 @@ function ProjectCard({ project }: ProjectCardProps) {
     <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
       {/* Image */}
       <div className="lg:w-1/2">
-        <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover"
-          />
-        </div>
+        <Link href={`/projects/${project.slug}`} className="block group">
+          <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+          </div>
+        </Link>
       </div>
 
       {/* Content */}
@@ -32,9 +36,11 @@ function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* Title */}
-        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-          {project.title}
-        </h3>
+        <Link href={`/projects/${project.slug}`}>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 hover:text-primary transition-colors">
+            {project.title}
+          </h3>
+        </Link>
 
         {/* Description */}
         <p className="text-gray-600 leading-relaxed mb-6">
@@ -42,7 +48,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         </p>
 
         {/* Services Completed */}
-        <div className="bg-gray-50 rounded-xl p-6">
+        <div className="bg-gray-50 rounded-xl p-6 mb-6">
           <h4 className="font-semibold text-gray-900 uppercase text-sm tracking-wide mb-4">
             Services Completed
           </h4>
@@ -55,6 +61,15 @@ function ProjectCard({ project }: ProjectCardProps) {
             ))}
           </div>
         </div>
+
+        {/* View Details Link */}
+        <Link
+          href={`/projects/${project.slug}`}
+          className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
+        >
+          View Project Details
+          <ArrowRight className="w-4 h-4" />
+        </Link>
       </div>
     </div>
   );
