@@ -5,7 +5,7 @@ import { officeLocations } from './locations-data';
 
 function LocationsSection() {
   return (
-    <section className="mt-16 md:mt-24">
+    <section className="my-16 md:my-24">
       <Container>
         <SectionHeader
           highlightedWord="Locations"

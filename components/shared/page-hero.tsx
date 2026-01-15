@@ -3,6 +3,7 @@ import { Icon } from '@/components/ui/icon';
 import Image from 'next/image';
 import img from '@/public/LooperGroup.svg';
 import Link from 'next/link';
+import Container from './container';
 
 export interface Stat {
   value: string;
@@ -20,7 +21,12 @@ function PageHero({ title, description, stats }: PageHeroProps) {
     <section
       data-navbar-theme="dark"
       className="bg-linear-to-r from-[#313131] via-[#000000] to-[#222222] text-white relative overflow-hidden">
-      <div className={`max-w-7xl mx-auto px-4 md:px-6 py-16 ${stats && stats.length > 0 ? 'md:py-20 lg:py-28 xl:py-32' : 'md:py-28 lg:py-36 xl:py-44'}`}>
+      <Container
+        className={`${
+          stats && stats.length > 0
+            ? 'md:py-20 lg:py-28 xl:py-32'
+            : 'md:py-28 lg:py-36 xl:py-44'
+        }`}>
         {/* Desktop version - original layout */}
         <div className="hidden md:block relative z-20">
           <div className="w-4/5">
@@ -28,17 +34,16 @@ function PageHero({ title, description, stats }: PageHeroProps) {
               <h2 className="sm:text-5xl lg:text-6xl font-bold">
                 {title}
               </h2>
-              <p className="mt-3 max-w-3xl">{description}</p>
+              <p className="mt-3 max-w-4xl text-lg">{description}</p>
             </div>
           </div>
+          {/*           
           <Link
-            href={'/about'}
-            className="inline-flex hover:scale-105 transition-all duration-300">
-            <Button className="flex items-center mt-6">
-              Read More
-              <Icon name="ArrowRight" />
-            </Button>
-          </Link>
+            href="/about"
+            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-2 rounded-full font-medium hover:bg-primary/90 transition-colors">
+            Learn More
+            <span className="text-xl">→</span>
+          </Link> */}
         </div>
 
         {/* Mobile version - optimized layout */}
@@ -78,10 +83,10 @@ function PageHero({ title, description, stats }: PageHeroProps) {
             </div>
           </div>
         )}
-      </div>
+      </Container>
 
       {/* Image - absolute positioned for both mobile and desktop */}
-      <div className="absolute top-0 bottom-0 right-0 h-full w-full">
+      <Container className="absolute top-0 bottom-0 right-0 h-full w-full">
         <div className="relative h-full w-full">
           <Image
             src={img}
@@ -90,7 +95,7 @@ function PageHero({ title, description, stats }: PageHeroProps) {
             priority
           />
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

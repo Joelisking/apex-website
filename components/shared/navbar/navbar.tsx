@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import MobileMenu from './mobile-menu';
+import Container from '../container';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -58,10 +59,14 @@ function Navbar() {
   // Reset theme on route change
   useEffect(() => {
     const detectTheme = () => {
-      const sections = document.querySelectorAll('[data-navbar-theme]');
+      const sections = document.querySelectorAll(
+        '[data-navbar-theme]'
+      );
       if (sections.length > 0) {
         const firstSection = sections[0];
-        const sectionTheme = firstSection.getAttribute('data-navbar-theme');
+        const sectionTheme = firstSection.getAttribute(
+          'data-navbar-theme'
+        );
         if (sectionTheme === 'dark' || sectionTheme === 'light') {
           setTheme(sectionTheme);
           return;
@@ -75,13 +80,12 @@ function Navbar() {
   }, [pathname]);
 
   const textColor = theme === 'dark' ? 'text-white' : 'text-gray-900';
-  const logoFilter = theme === 'dark' ? 'brightness-0 invert' : '';
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'py-3' : 'py-5'
+          isScrolled ? 'py-4' : 'py-5'
         }`}>
         {/* Optional subtle background when scrolled */}
         <div
@@ -92,7 +96,7 @@ function Navbar() {
           } backdrop-blur-sm`}
         />
 
-        <div className="container mx-auto px-6 lg:px-12 relative">
+        <Container className="container mx-auto px-6 lg:px-12 relative">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="relative z-10">
@@ -101,7 +105,7 @@ function Navbar() {
                 alt="APEX Consulting & Surveying"
                 width={120}
                 height={40}
-                className={`h-10 w-auto transition-all duration-300 ${logoFilter}`}
+                className={`h-10 w-auto transition-all duration-300`}
               />
             </Link>
 
@@ -145,7 +149,7 @@ function Navbar() {
               </svg>
             </button>
           </div>
-        </div>
+        </Container>
       </nav>
 
       {/* Mobile Menu */}

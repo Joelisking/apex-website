@@ -1,11 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SectionHeader from '@/components/shared/section-header';
+import Container from '../shared/container';
 
 function Hero() {
   return (
-    <section data-navbar-theme="dark" className="relative min-h-screen flex items-center">
-      {/* Background Image */}
+    <section
+      data-navbar-theme="dark"
+      className="relative min-h-[90vh] flex items-center">
+      {/* Background Image (fallback) */}
       <Image
         src="/hero.png"
         alt="Aerial view of farmland and road"
@@ -14,12 +17,24 @@ function Hero() {
         priority
       />
 
+      {/* Background Video */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/hero.png"
+        aria-hidden="true">
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
+
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/70" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 lg:px-12 py-20">
-        <div className="max-w-5xl">
+        <Container>
           <SectionHeader
             highlightedWord="Apex Consulting"
             size="lg"
@@ -49,7 +64,7 @@ function Hero() {
             Learn More
             <span className="text-xl">→</span>
           </Link>
-        </div>
+        </Container>
       </div>
     </section>
   );

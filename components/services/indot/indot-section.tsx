@@ -10,10 +10,10 @@ function IndotSection() {
         <SectionHeader
           highlightedWord="INDOT"
           size="base"
-          className="mb-2">
+          className="mb-1">
           INDOT Prequalification
         </SectionHeader>
-        <p className="mb-4 max-w-4xl text-xl">
+        <p className="mb-4 text-xl">
           APEX received Indiana Department of Transportation (INDOT)
           prequalification for five primary work types:
         </p>

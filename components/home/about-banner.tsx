@@ -6,7 +6,7 @@ import SectionHeader from '../shared/section-header';
 const highlights = [
   { value: 'INDOT', label: 'Prequalified' },
   { value: '100+', label: 'Projects Completed' },
-  { value: 'DBE/MBE', label: 'Certified Firm' },
+  { value: 'DBE/MBE/EBE', label: 'Certified Firm' },
 ];
 
 function AboutBanner() {
@@ -65,7 +65,7 @@ function AboutBanner() {
               {highlights.map((item, index) => (
                 <div key={index} className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-primary font-bold text-lg">
+                    <span className="text-primary font-bold text-base">
                       {item.value}
                     </span>
                     <span className="text-gray-700 text-sm">

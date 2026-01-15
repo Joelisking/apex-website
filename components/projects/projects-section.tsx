@@ -6,7 +6,6 @@ function ProjectsSection() {
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <h2>Our Portfolio</h2>
         <div className="space-y-16 md:space-y-24">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} />
