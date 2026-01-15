@@ -1,100 +1,90 @@
-import React from 'react';
-
 import Image from 'next/image';
-import img from '@/public/LooperGroup.svg';
 import Link from 'next/link';
-import { Button } from '../ui/button';
-import { Icon } from '../ui/icon';
 import Container from '../shared/container';
+import SectionHeader from '../shared/section-header';
+
+const highlights = [
+  { value: 'INDOT', label: 'Prequalified' },
+  { value: '100+', label: 'Projects Completed' },
+  { value: 'DBE/MBE', label: 'Certified Firm' },
+];
 
 function AboutBanner() {
   return (
-    <section className="mt-24">
-      <Container className="bg-linear-to-r from-[#313131] via-[#000000] to-[#222222] text-white py-8 md:py-16 relative overflow-hidden rounded-3xl">
-        {/* Desktop version - original layout */}
-        <div className="hidden md:block relative z-20 px-16">
-          <div className="w-4/5">
-            <span className="uppercase">about us</span>
-
-            <div className="mt-6">
-              <h2 className="sm:text-4xl font-bold">
-                Chart Your Path to Success with Expert Surveys &
-                Engineering Precision
-              </h2>
-              {/* <p className="mt-3"> */}
-              <p className="mt-3">
-                At APEX Consulting & Surveying, Inc., we provide the
-                expert guidance you need to ensure your construction
-                project runs smoothly from start to finish. Whether
-                it’s topographical surveys to form the foundation of
-                your design, right-of-way plans for land acquisition,
-                or construction staking to keep everything on track,
-                APEX delivers reliable and precise solutions. With
-                over 150 years of combined experience, our team is
-                committed to offering high-quality surveying and
-                engineering services across Indiana—helping you move
-                your project forward with confidence.
-              </p>
+    <section
+      data-navbar-theme="light"
+      className="py-16 md:py-24 bg-gray-50">
+      <Container>
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+          {/* Image Side */}
+          <div className="flex-1 w-full relative">
+            <div className="relative">
+              {/* Main Image */}
+              <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden">
+                <Image
+                  src="/home-about.png"
+                  alt="APEX team at work"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              {/* Accent Card */}
+              <div className="absolute -bottom-6 -right-6 bg-primary text-white p-6 rounded-2xl shadow-xl hidden md:block">
+                <div className="text-4xl font-bold">20+</div>
+                <div className="text-sm text-white/80">
+                  Years of Excellence
+                </div>
+              </div>
             </div>
           </div>
-          <Link
-            href={'/about'}
-            className="inline-flex hover:scale-105 transition-all duration-300">
-            <Button
-              //   variant={'primary'}
-              className="flex items-center mt-6">
-              Read More
-              <Icon name="ArrowRight" />
-            </Button>
-          </Link>
-        </div>
 
-        {/* Mobile version - optimized layout */}
-        <div className="md:hidden relative z-20">
-          <div className="w-4/5 sm:w-3/4">
-            <span className="uppercase">about us</span>
+          {/* Content Side */}
+          <div className="flex-1">
+            <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+              About Us
+            </span>
+            <SectionHeader
+              highlightedWord="Engineering Solutions"
+              size="base"
+              className="mb-4">
+              Your Trusted Partner for Expert Surveying & Engineering
+              Solutions
+            </SectionHeader>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              At APEX Consulting & Surveying, Inc., we provide the
+              expert guidance you need to ensure your construction
+              project runs smoothly from start to finish. Whether
+              it&apos;s topographical surveys to form the foundation
+              of your design, right-of-way plans for land acquisition,
+              or construction staking to keep everything on track,
+              APEX delivers reliable and precise solutions.
+            </p>
 
-            <div className="mt-4">
-              <h2 className="text-3xl sm:text-4xl font-bold">
-                Chart Your Path to Success with Expert Surveys &
-                Engineering Precision
-              </h2>
-              <p className="mt-3 text-sm">
-                At APEX Consulting & Surveying, Inc., we provide the
-                expert guidance you need to ensure your construction
-                project runs smoothly from start to finish. Whether
-                it’s topographical surveys to form the foundation of
-                your design, right-of-way plans for land acquisition,
-                or construction staking to keep everything on track,
-                APEX delivers reliable and precise solutions. With
-                over 150 years of combined experience, our team is
-                committed to offering high-quality surveying and
-                engineering services across Indiana—helping you move
-                your project forward with confidence.
-              </p>
+            {/* Highlights */}
+            <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-8">
+              {highlights.map((item, index) => (
+                <div key={index} className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <span className="text-primary font-bold text-lg">
+                      {item.value}
+                    </span>
+                    <span className="text-gray-700 text-sm">
+                      {item.label}
+                    </span>
+                  </div>
+                  {index < highlights.length - 1 && (
+                    <div className="hidden md:block w-px h-6 bg-gray-300" />
+                  )}
+                </div>
+              ))}
             </div>
-          </div>
-          <Link
-            href={'/about'}
-            className="inline-flex hover:scale-105 transition-all duration-300">
-            <Button
-              //   variant={'primary'}
-              className="flex items-center gap-2 mt-6 w-auto">
-              Read More
-              <Icon name="ArrowRight" />
-            </Button>
-          </Link>
-        </div>
 
-        {/* Image - absolute positioned for both mobile and desktop */}
-        <div className="absolute top-0 bottom-0 right-0 h-full w-full ">
-          <div className="relative h-full w-full">
-            <Image
-              src={img}
-              alt="svg"
-              className="h-full w-full object-cover lg:object-contain object-right opacity-70 lg:opacity-100 transition-all duration-300"
-              priority
-            />
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors">
+              Learn More About Us
+              <span>→</span>
+            </Link>
           </div>
         </div>
       </Container>

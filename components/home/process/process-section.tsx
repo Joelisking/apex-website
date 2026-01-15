@@ -8,13 +8,14 @@ function ProcessSection() {
     <section data-navbar-theme="light" className="py-16 md:py-24">
       <Container>
         {/* Section Header */}
-        <div className="mb-12 md:mb-16">
+        <div className="mb-4">
           <SectionHeader highlightedWord="Process" size="base">
             Our Process
           </SectionHeader>
-          <p className="text-xl leading-relaxed mb-4">
-            Precision-driven surveying and engineering, guiding your
-            project from start to finish with ease.
+          <p className="text-xl leading-relaxed w-4/5">
+            From initial surveys to final construction staking, our
+            proven four-step process ensures your project is completed
+            with accuracy, on time, and within budget.
           </p>
         </div>
 
