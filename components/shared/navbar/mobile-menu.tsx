@@ -35,12 +35,12 @@ function MobileMenu({ isOpen, onClose, links, currentPath }: MobileMenuProps) {
 
       {/* Menu Panel */}
       <div
-        className={`fixed top-0 right-0 bottom-0 w-[280px] bg-white z-50 transform transition-transform duration-300 lg:hidden ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed top-0 left-0 right-0 bg-white z-50 transform transition-transform duration-300 lg:hidden shadow-lg ${
+          isOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
         {/* Close Button */}
-        <div className="flex justify-end p-4">
+        <div className="flex justify-end p-4 border-b border-gray-200">
           <button
             onClick={onClose}
             className="p-2 text-gray-600 hover:text-gray-900"
@@ -64,13 +64,13 @@ function MobileMenu({ isOpen, onClose, links, currentPath }: MobileMenuProps) {
 
         {/* Navigation Links */}
         <nav className="px-6 py-4">
-          <ul className="space-y-4">
+          <ul className="space-y-2">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className={`block py-2 text-lg font-medium transition-colors ${
+                  className={`block py-3 text-base font-medium transition-colors ${
                     currentPath === link.href
                       ? 'text-primary'
                       : 'text-gray-900 hover:text-primary'
@@ -84,7 +84,7 @@ function MobileMenu({ isOpen, onClose, links, currentPath }: MobileMenuProps) {
         </nav>
 
         {/* CTA Button */}
-        <div className="px-6 pt-6">
+        <div className="px-6 pb-6 border-t border-gray-200 pt-4">
           <Link
             href="/contact"
             onClick={onClose}
