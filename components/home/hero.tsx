@@ -33,7 +33,7 @@ function Hero() {
       <div className="absolute inset-0 bg-black/70" />
 
       {/* Content */}
-      <Container className="relative z-10 py-20">
+      <Container className="relative z-10 py-20 w-full">
         <SectionHeader
           highlightedWord="Apex Consulting"
           size="lg"

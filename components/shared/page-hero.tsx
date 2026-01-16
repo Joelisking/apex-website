@@ -19,10 +19,10 @@ function PageHero({ title, description, stats }: PageHeroProps) {
       data-navbar-theme="dark"
       className="bg-linear-to-r from-[#313131] via-[#000000] to-[#222222] text-white relative overflow-hidden">
       <Container
-        className={`py-24 ${
+        className={`py-28 ${
           stats && stats.length > 0
-            ? 'md:py-20 lg:py-28 xl:py-32'
-            : 'md:py-28 lg:py-36 xl:py-44'
+            ? 'md:py-20 lg:py-28 xl:py-36'
+            : 'md:py-28 lg:py-36 xl:py-48'
         }`}>
         {/* Desktop version - original layout */}
         <div className="hidden md:block relative z-20">
@@ -37,7 +37,7 @@ function PageHero({ title, description, stats }: PageHeroProps) {
         </div>
 
         {/* Mobile version - optimized layout */}
-        <div className="md:hidden relative z-20">
+        <div className="md:hidden relative z-20 text-left">
           <div className="w-full">
             <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
               {title}
@@ -67,19 +67,16 @@ function PageHero({ title, description, stats }: PageHeroProps) {
         )}
       </Container>
 
-      {/* Image - absolute positioned for both mobile and desktop */}
-      <div className="absolute top-0 bottom-0 right-0 h-full w-full pointer-events-none">
-        <div className="relative h-full w-full max-w-7xl mx-auto">
-          <div className="relative h-full w-full">
-            <Image
-              src={img}
-              alt=""
-              className="h-full w-full object-cover lg:object-contain object-right opacity-30 lg:opacity-100 transition-all duration-300"
-              priority
-              aria-hidden="true"
-            />
-          </div>
-        </div>
+      {/* Background graphic */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src={img}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover lg:object-contain object-right opacity-40 md:opacity-80"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/40 mix-blend-multiply" />
       </div>
     </section>
   );

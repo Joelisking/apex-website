@@ -1,35 +1,188 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Icon } from '@/components/ui/icon';
 import Container from '@/components/shared/container';
+import {
+  contactFormSchema,
+  type ContactFormData,
+} from '@/lib/validations/contact';
+
+type FieldErrors = Partial<Record<keyof ContactFormData, string>>;
 
 function ContactForm() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    'idle' | 'success' | 'error'
+  >('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [touchedFields, setTouchedFields] = useState<Set<string>>(
+    new Set()
+  );
+
+  function validateField(name: keyof ContactFormData, value: string) {
+    // Get the field schema from the contact form schema
+    const fieldSchema = contactFormSchema.shape[name];
+
+    // Validate the field - Zod schema will handle trimming and empty strings
+    const result = fieldSchema.safeParse(value);
+
+    if (!result.success) {
+      const error =
+        result.error.issues[0]?.message || 'Invalid input';
+      setFieldErrors((prev) => ({ ...prev, [name]: error }));
+      return false;
+    }
+
+    // Clear error for this field if validation passes
+    setFieldErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[name];
+      return newErrors;
+    });
+    return true;
+  }
+
+  function handleBlur(
+    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const { name, value } = event.target;
+    setTouchedFields((prev) => new Set(prev).add(name));
+
+    if (name in contactFormSchema.shape) {
+      validateField(name as keyof ContactFormData, value);
+    }
+  }
+
+  function handleChange(
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const { name, value } = event.target;
+
+    // Only validate on change if the field has been touched (blurred at least once)
+    // This prevents showing errors while the user is still typing
+    if (touchedFields.has(name) && name in contactFormSchema.shape) {
+      validateField(name as keyof ContactFormData, value);
+    }
+  }
 
   async function handleSubmit(
     event: React.FormEvent<HTMLFormElement>
   ) {
     event.preventDefault();
-    setIsSubmitting(true);
-    setHasSubmitted(false);
+    setSubmitStatus('idle');
+    setErrorMessage('');
 
     const formData = new FormData(event.currentTarget);
-    // Placeholder – hook this into your email service or API route.
-    console.log(
-      'Contact form submitted',
-      Object.fromEntries(formData.entries())
+    const data = {
+      name: (formData.get('name') as string) || '',
+      email: (formData.get('email') as string) || '',
+      phone: (formData.get('phone') as string) || '',
+      organization: (formData.get('organization') as string) || '',
+      projectType: (formData.get('projectType') as string) || '',
+      message: (formData.get('message') as string) || '',
+    };
+
+    // Mark all fields as touched so errors will show
+    const allFieldNames = [
+      'name',
+      'email',
+      'phone',
+      'organization',
+      'projectType',
+      'message',
+    ];
+    setTouchedFields(new Set(allFieldNames));
+
+    // Validate all fields individually first to show all errors
+    let hasErrors = false;
+    const errors: FieldErrors = {};
+
+    // Validate each field
+    (Object.keys(data) as Array<keyof ContactFormData>).forEach(
+      (fieldName) => {
+        const fieldSchema = contactFormSchema.shape[fieldName];
+        const value = data[fieldName];
+
+        const result = fieldSchema.safeParse(value);
+        if (!result.success) {
+          hasErrors = true;
+          const error =
+            result.error.issues[0]?.message || 'Invalid input';
+          errors[fieldName] = error;
+        }
+      }
     );
 
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    setIsSubmitting(false);
-    setHasSubmitted(true);
-    event.currentTarget.reset();
+    // Also do full schema validation to catch any cross-field issues
+    const fullResult = contactFormSchema.safeParse(data);
+    if (!fullResult.success) {
+      hasErrors = true;
+      fullResult.error.issues.forEach((issue) => {
+        const field = issue.path[0] as keyof ContactFormData;
+        if (!errors[field]) {
+          errors[field] = issue.message;
+        }
+      });
+    }
+
+    if (hasErrors) {
+      setFieldErrors(errors);
+      // Scroll to first error field
+      const firstErrorField = Object.keys(errors)[0];
+      if (firstErrorField) {
+        const errorElement = formRef.current?.querySelector(
+          `[name="${firstErrorField}"]`
+        ) as HTMLElement;
+        errorElement?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+        errorElement?.focus();
+      }
+      return;
+    }
+
+    setFieldErrors({});
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          responseData.error || 'Failed to send message'
+        );
+      }
+
+      setSubmitStatus('success');
+      formRef.current?.reset();
+      setTouchedFields(new Set());
+      setFieldErrors({});
+    } catch (error) {
+      setSubmitStatus('error');
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -48,7 +201,11 @@ function ContactForm() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="space-y-5"
+            noValidate>
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-1.5">
                 <Label htmlFor="name" isRequired>
@@ -58,9 +215,16 @@ function ContactForm() {
                   id="name"
                   name="name"
                   placeholder="Jane Doe"
-                  required
                   autoComplete="name"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  className={fieldErrors.name ? 'border-red-500' : ''}
                 />
+                {fieldErrors.name && (
+                  <p className="text-xs text-red-600">
+                    {fieldErrors.name}
+                  </p>
+                )}
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="email" isRequired>
@@ -71,9 +235,18 @@ function ContactForm() {
                   name="email"
                   type="email"
                   placeholder="you@example.com"
-                  required
                   autoComplete="email"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  className={
+                    fieldErrors.email ? 'border-red-500' : ''
+                  }
                 />
+                {fieldErrors.email && (
+                  <p className="text-xs text-red-600">
+                    {fieldErrors.email}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -84,16 +257,37 @@ function ContactForm() {
                   id="organization"
                   name="organization"
                   placeholder="City of Fort Wayne, INDOT, developer, etc."
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  className={
+                    fieldErrors.organization ? 'border-red-500' : ''
+                  }
                 />
+                {fieldErrors.organization && (
+                  <p className="text-xs text-red-600">
+                    {fieldErrors.organization}
+                  </p>
+                )}
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="phone">Phone</Label>
                 <Input
                   id="phone"
                   name="phone"
+                  type="tel"
                   placeholder="(555) 555-5555"
                   autoComplete="tel"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  className={
+                    fieldErrors.phone ? 'border-red-500' : ''
+                  }
                 />
+                {fieldErrors.phone && (
+                  <p className="text-xs text-red-600">
+                    {fieldErrors.phone}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -105,7 +299,17 @@ function ContactForm() {
                 id="projectType"
                 name="projectType"
                 placeholder="Roadway, trail, site development, bridge, etc."
+                onBlur={handleBlur}
+                onChange={handleChange}
+                className={
+                  fieldErrors.projectType ? 'border-red-500' : ''
+                }
               />
+              {fieldErrors.projectType && (
+                <p className="text-xs text-red-600">
+                  {fieldErrors.projectType}
+                </p>
+              )}
             </div>
 
             <div className="space-y-1.5">
@@ -115,12 +319,21 @@ function ContactForm() {
               <Textarea
                 id="message"
                 name="message"
-                required
                 placeholder="Share a short description of your project, anticipated timeline, and any known constraints."
+                onBlur={handleBlur}
+                onChange={handleChange}
+                className={
+                  fieldErrors.message ? 'border-red-500' : ''
+                }
               />
+              {fieldErrors.message && (
+                <p className="text-xs text-red-600">
+                  {fieldErrors.message}
+                </p>
+              )}
             </div>
 
-            <div className="flex flex-col gap-3 pt-2 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-3 pt-2">
               <Button
                 type="submit"
                 disabled={isSubmitting}
@@ -148,13 +361,20 @@ function ContactForm() {
               </p>
             </div>
 
-            {hasSubmitted && (
+            {submitStatus === 'success' && (
               <div className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs md:text-sm text-emerald-900 flex items-center gap-2">
                 <Icon name="CircleCheck" className="h-4 w-4" />
                 <span>
                   Thank you — your message has been sent. We&apos;ll
                   be in touch soon.
                 </span>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-xs md:text-sm text-red-900 flex items-center gap-2">
+                <Icon name="CircleX" className="h-4 w-4" />
+                <span>{errorMessage}</span>
               </div>
             )}
           </form>

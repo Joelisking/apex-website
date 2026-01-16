@@ -26,6 +26,11 @@ function LocationMap({ location }: LocationMapProps) {
           </div>
         )}
       </div>
+      {location.address && (
+        <p className="mt-3 text-sm md:text-base text-zinc-700 font-medium text-center">
+          {location.address}
+        </p>
+      )}
     </div>
   );
 }

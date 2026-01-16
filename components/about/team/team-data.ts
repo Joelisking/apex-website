@@ -36,11 +36,6 @@ export const teamMembers: TeamMember[] = [
     image: '/about/taylor-willoughby.webp',
   },
   {
-    name: 'Nathan Anthony',
-    role: 'Sr. Survey Crew Chief',
-    image: '/about/nathan-anthony.webp',
-  },
-  {
     name: 'Troy Arnett',
     role: 'Survey Crew Chief',
     image: '/about/troy-arnett.webp',

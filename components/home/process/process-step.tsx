@@ -28,7 +28,7 @@ function ProcessStep({ data, reversed = false }: ProcessStepProps) {
         <h3 className="text-xl md:text-2xl lg:text-3xl font-bold md:mt-4 md:mb-4">
           {title}
         </h3>
-        <p className="text-base md:text-xl md:leading-relaxed mb-4">
+        <p className="text-base md:text-lg md:leading-relaxed mb-4 text-gray-600">
           {description}
         </p>
       </div>
