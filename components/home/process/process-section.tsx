@@ -5,10 +5,10 @@ import { processSteps } from './process-data';
 
 function ProcessSection() {
   return (
-    <section data-navbar-theme="light" className="py-16 md:py-24">
+    <section data-navbar-theme="light" className="mt-16 md:mt-24">
       <Container>
         {/* Section Header */}
-        <div className="mb-4">
+        <div className="mb-6 md:mb-4">
           <SectionHeader highlightedWord="Process" size="base">
             Our Process
           </SectionHeader>
@@ -20,7 +20,7 @@ function ProcessSection() {
         </div>
 
         {/* Process Steps */}
-        <div className="flex flex-col gap-16 md:gap-20 lg:gap-24">
+        <div className="flex flex-col gap-6 sm:gap-16 md:gap-20 lg:gap-24">
           {processSteps.map((step, index) => (
             <ProcessStep
               key={step.stepNumber}

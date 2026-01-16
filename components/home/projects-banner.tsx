@@ -7,7 +7,7 @@ function ProjectsBanner() {
   return (
     <section
       data-navbar-theme="dark"
-      className="relative py-16 md:py-24 lg:py-36">
+      className="relative py-16 md:py-24 lg:py-36 mt-16 md:mt-24">
       {/* Background Image */}
       <Image
         src="/home-projects.png"
@@ -31,7 +31,7 @@ function ProjectsBanner() {
             className="text-white mt-1 mb-2">
             Delivering Excellence Across Indiana&apos;s Infrastructure
           </SectionHeader>
-          <p className="text-white text-lg mb-4">
+          <p className="text-white md:text-lg mb-4">
             APEX Consulting & Surveying, Inc. works with a variety of
             clients to deliver top-quality engineering and surveying
             services. From the CR 15 Roadway Reconstruction in

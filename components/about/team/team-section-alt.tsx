@@ -5,7 +5,7 @@ import { teamMembers } from './team-data';
 
 function TeamSectionAlt() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="mt-16 md:mt-24">
       <Container>
         <SectionHeader
           highlightedWord="Our Team"
@@ -13,7 +13,7 @@ function TeamSectionAlt() {
           className="mb-1">
           Meet Our Team (Alternate)
         </SectionHeader>
-        <p className="mb-8 text-lg leading-relaxed max-w-4xl">
+        <p className="mb-8 md:text-lg leading-relaxed max-w-4xl">
           The APEX Consulting & Surveying Team Brings Extensive
           Experience Serving Clients In The Fort Wayne Area. They Take
           Pride In Their Ability To Swiftly Resolve Challenges While
@@ -30,8 +30,7 @@ function TeamSectionAlt() {
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="flex items-center gap-4 bg-gray-50 rounded-xl p-3"
-            >
+              className="flex items-center gap-4 bg-gray-50 rounded-xl p-3">
               <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0">
                 <Image
                   src={member.image}
@@ -41,7 +40,9 @@ function TeamSectionAlt() {
                 />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">{member.name}</h3>
+                <h3 className="font-semibold text-gray-900">
+                  {member.name}
+                </h3>
                 <p className="text-gray-500 text-sm">{member.role}</p>
               </div>
             </div>
@@ -60,7 +61,9 @@ function TeamSectionAlt() {
                   className="object-cover"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900">{member.name}</h3>
+              <h3 className="font-semibold text-gray-900">
+                {member.name}
+              </h3>
               <p className="text-gray-500 text-sm">{member.role}</p>
             </div>
           ))}

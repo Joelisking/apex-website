@@ -13,7 +13,7 @@ function TeamSection() {
           className="mb-1">
           Meet Our Team
         </SectionHeader>
-        <p className="mb-4 text-lg leading-relaxed">
+        <p className="mb-4 md:text-lg leading-relaxed">
           The APEX Consulting & Surveying Team Brings Extensive
           Experience Serving Clients In The Fort Wayne Area. They Take
           Pride In Their Ability To Swiftly Resolve Challenges While

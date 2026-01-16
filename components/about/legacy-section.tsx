@@ -23,7 +23,7 @@ function LegacySection() {
         </SectionHeader>
 
         {/* Introduction Paragraph */}
-        <p className="text-lg leading-relaxed">
+        <p className="text-base md:text-lg leading-relaxed">
           Apex Consulting And Surveying, Inc. (APEX) Was Founded In
           2004 Under The Name Of McCrea Land Surveying, Inc., Which Is
           Already Known For Providing Excellent Topographical And
@@ -37,12 +37,14 @@ function LegacySection() {
         </p>
 
         {/* Content Grid */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start mt-12">
+        <div className="flex flex-col lg:flex-row gap-4 md:gap-10 lg:gap-16 items-start mt-3 md:mt-12">
           {/* Bullet Points */}
           <div className="flex-1">
-            <ul className="space-y-6 list-disc pl-4">
+            <ul className="space-y-2 md:space-y-6 list-disc pl-4">
               {bulletPoints.map((point, index) => (
-                <li key={index} className="text-lg leading-relaxed">
+                <li
+                  key={index}
+                  className="text-base md:text-lg leading-relaxed">
                   {point}
                 </li>
               ))}
@@ -50,7 +52,7 @@ function LegacySection() {
 
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors mt-8">
+              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors mt-4">
               Learn More
               <span>→</span>
             </Link>

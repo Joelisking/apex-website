@@ -13,7 +13,7 @@ function ProjectsSection() {
           className="mb-1">
           Our Notable Projects
         </SectionHeader>
-        <p className="text-xl leading-relaxed mb-4">
+        <p className="text-base md:text-xl leading-relaxed mb-2 sm:mb-4">
           With decades of experience, APEX has successfully delivered
           projects across Indiana for state agencies, local
           governments, and private clients. Explore our comprehensive

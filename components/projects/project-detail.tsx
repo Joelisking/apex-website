@@ -214,7 +214,7 @@ function ProjectDetail({ project }: ProjectDetailProps) {
               {galleryImages.map((image, index) => (
                 <div
                   key={index}
-                  className="relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group"
+                  className="relative aspect-4/3 rounded-xl overflow-hidden cursor-pointer group"
                   onClick={() => openLightbox(index)}>
                   <Image
                     src={image.src}

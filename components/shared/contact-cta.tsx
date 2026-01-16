@@ -36,7 +36,7 @@ function ContactCTA() {
               Partner with APEX for precise, dependable project
               delivery.
             </SectionHeader>
-            <p className="text-white/80 text-sm md:text-base lg:text-lg leading-relaxed max-w-3xl">
+            <p className="text-white/80 text-base lg:text-lg md:leading-relaxed max-w-3xl">
               Whether you&apos;re planning a roadway improvement, site
               development, or complex infrastructure upgrade, our team
               brings field-tested surveying and engineering expertise
@@ -92,7 +92,7 @@ function ContactCTA() {
                   <div className="font-medium">
                     Surveying & construction staking
                   </div>
-                  <div className="text-xs md:text-sm text-white/70">
+                  <div className="text-xs md:text-sm text-white/90">
                     Topographic surveys, right-of-way, and
                     construction layout for transportation and site
                     work.
@@ -108,7 +108,7 @@ function ContactCTA() {
                   <div className="font-medium">
                     Roadway & site design support
                   </div>
-                  <div className="text-xs md:text-sm text-white/70">
+                  <div className="text-xs md:text-sm text-white/90">
                     Align survey data, design intent, and
                     constructability to keep your schedule on track.
                   </div>
@@ -123,7 +123,7 @@ function ContactCTA() {
                   <div className="font-medium">
                     INDOT & municipal projects
                   </div>
-                  <div className="text-xs md:text-sm text-white/70">
+                  <div className="text-xs md:text-sm text-white/90">
                     Experienced with state and local standards,
                     documentation, and coordination.
                   </div>

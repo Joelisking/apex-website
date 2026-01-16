@@ -12,13 +12,13 @@ function StormwaterSection() {
           className="mb-1">
           Stormwater Quality Management
         </SectionHeader>
-        <p className="text-2xl italic font-medium mb-2">
+        <p className="text-lg md:text-2xl italic font-medium mb-2">
           Expert Stormwater Quality Management For{' '}
           <span className="text-primary not-italic">
             Compliance And Cost Efficiency
           </span>
         </p>
-        <p className="text-xl leading-relaxed mb-4">
+        <p className="text-base md:text-xl leading-relaxed mb-2 sm:mb-4">
           Our stormwater quality service includes preparing stormwater
           pollution prevention plans (SWPPP) and inspecting stormwater
           quality measures to ensure that the placement of the erosion

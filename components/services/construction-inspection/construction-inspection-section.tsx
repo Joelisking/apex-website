@@ -23,13 +23,13 @@ function ConstructionInspectionSection() {
           className="mb-1">
           Construction Inspection
         </SectionHeader>
-        <p className="text-2xl italic font-medium mb-2">
+        <p className="text-lg md:text-2xl italic font-medium mb-2">
           Ensuring Quality And Compliance With{' '}
           <span className="text-primary">
             Expert Construction Inspection
           </span>
         </p>
-        <p className="text-xl leading-relaxed mb-4">
+        <p className="text-base md:text-xl leading-relaxed mb-2 sm:mb-4">
           We oversee the entire construction process, inspecting
           contractor activities to guarantee compliance with project
           specifications. Our team also prepares detailed daily
@@ -39,7 +39,7 @@ function ConstructionInspectionSection() {
           the highest standards of safety and precision.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-6">
           {inspectionImages.map((image, index) => (
             <div
               key={index}

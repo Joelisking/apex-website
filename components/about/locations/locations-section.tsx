@@ -13,7 +13,7 @@ function LocationsSection() {
           className="mb-1">
           Office Locations
         </SectionHeader>
-        <p className="text-lg leading-relaxed mb-4">
+        <p className="md:text-lg leading-relaxed mb-4">
           Our Main Office Is Located In The City Of Fort Wayne And Has
           Been Providing Professional Surveying And Engineering
           Services For The Northern State Of Indiana Region. We

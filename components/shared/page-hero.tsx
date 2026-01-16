@@ -1,8 +1,5 @@
-import { Button } from '@/components/ui/button';
-import { Icon } from '@/components/ui/icon';
 import Image from 'next/image';
 import img from '@/public/LooperGroup.svg';
-import Link from 'next/link';
 import Container from './container';
 
 export interface Stat {
@@ -22,7 +19,7 @@ function PageHero({ title, description, stats }: PageHeroProps) {
       data-navbar-theme="dark"
       className="bg-linear-to-r from-[#313131] via-[#000000] to-[#222222] text-white relative overflow-hidden">
       <Container
-        className={`${
+        className={`py-24 ${
           stats && stats.length > 0
             ? 'md:py-20 lg:py-28 xl:py-32'
             : 'md:py-28 lg:py-36 xl:py-44'
@@ -37,33 +34,18 @@ function PageHero({ title, description, stats }: PageHeroProps) {
               <p className="mt-3 max-w-4xl text-lg">{description}</p>
             </div>
           </div>
-          {/*           
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-2 rounded-full font-medium hover:bg-primary/90 transition-colors">
-            Learn More
-            <span className="text-xl">→</span>
-          </Link> */}
         </div>
 
         {/* Mobile version - optimized layout */}
         <div className="md:hidden relative z-20">
           <div className="w-full">
-            <div className="mt-4">
-              <h2 className="text-3xl sm:text-4xl font-bold">
-                {title}
-              </h2>
-              <p className="mt-3 text-sm">{description}</p>
-            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
+              {title}
+            </h2>
+            <p className="mt-4 text-base sm:leading-relaxed text-white/90">
+              {description}
+            </p>
           </div>
-          <Link
-            href={'/about'}
-            className="inline-flex hover:scale-105 transition-all duration-300">
-            <Button className="flex items-center gap-2 mt-6 w-auto">
-              Read More
-              <Icon name="ArrowRight" />
-            </Button>
-          </Link>
         </div>
 
         {/* Stats - shown at bottom if provided */}
@@ -86,16 +68,19 @@ function PageHero({ title, description, stats }: PageHeroProps) {
       </Container>
 
       {/* Image - absolute positioned for both mobile and desktop */}
-      <Container className="absolute top-0 bottom-0 right-0 h-full w-full">
-        <div className="relative h-full w-full">
-          <Image
-            src={img}
-            alt="svg"
-            className="h-full w-full object-cover lg:object-contain object-right opacity-70 lg:opacity-100 transition-all duration-300"
-            priority
-          />
+      <div className="absolute top-0 bottom-0 right-0 h-full w-full pointer-events-none">
+        <div className="relative h-full w-full max-w-7xl mx-auto">
+          <div className="relative h-full w-full">
+            <Image
+              src={img}
+              alt=""
+              className="h-full w-full object-cover lg:object-contain object-right opacity-30 lg:opacity-100 transition-all duration-300"
+              priority
+              aria-hidden="true"
+            />
+          </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

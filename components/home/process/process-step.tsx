@@ -19,16 +19,18 @@ function ProcessStep({ data, reversed = false }: ProcessStepProps) {
     <div
       className={`flex flex-col ${
         reversed ? 'md:flex-row-reverse' : 'md:flex-row'
-      } gap-8 md:gap-12 lg:gap-16 items-center`}>
+      } md:gap-12 lg:gap-16 items-center`}>
       {/* Text Content */}
       <div className="flex-1">
-        <span className="text-6xl md:text-7xl lg:text-8xl font-medium text-primary">
+        <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-primary">
           {stepNumber}
         </span>
-        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mt-4 mb-4">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold md:mt-4 md:mb-4">
           {title}
         </h3>
-        <p className="text-xl leading-relaxed mb-4">{description}</p>
+        <p className="text-base md:text-xl md:leading-relaxed mb-4">
+          {description}
+        </p>
       </div>
 
       {/* Image */}

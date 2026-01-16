@@ -13,13 +13,13 @@ function RightOfWaySection() {
           className="mb-1">
           Right-Of-Way Engineering
         </SectionHeader>
-        <p className="text-2xl italic font-medium mb-2">
+        <p className="text-lg md:text-2xl italic font-medium mb-2">
           Proven Right-Of-Way Engineering For{' '}
           <span className="text-primary">
             State And Local Projects
           </span>
         </p>
-        <p className="text-xl leading-relaxed mb-4">
+        <p className="text-base md:text-xl leading-relaxed mb-2 sm:mb-4">
           With a strong track record, APEX has completed numerous
           right-of-way projects for the Indiana Department of
           Transportation (INDOT) and various local public agencies.
@@ -31,7 +31,7 @@ function RightOfWaySection() {
           services include:
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6">
           {rightOfWayServices.map((service, index) => (
             <RowServiceCard key={index} service={service} />
           ))}
