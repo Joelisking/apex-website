@@ -14,22 +14,19 @@ export const contactFormSchema = z.object({
   phone: z
     .string()
     .max(20, 'Phone must be less than 20 characters')
-    .refine(
-      (val) => {
-        // Allow empty values since phone is optional
-        if (!val || val.trim() === '') return true;
-        
-        // Check format (allows digits, spaces, dashes, parentheses, plus, periods)
-        if (!/^[\d\s\-\(\)\+\.]+$/.test(val.trim())) return false;
-        
-        // Extract digits only
-        const digits = val.replace(/\D/g, '');
-        
-        // If phone number is provided, it must have exactly 10 digits
-        return digits.length === 10;
-      },
-      'Phone number must contain exactly 10 digits'
-    )
+    .refine((val) => {
+      // Allow empty values since phone is optional
+      if (!val || val.trim() === '') return true;
+
+      // Check format (allows digits, spaces, dashes, parentheses, plus, periods)
+      if (!/^[\d\s\-\(\)\+\.]+$/.test(val.trim())) return false;
+
+      // Extract digits only
+      const digits = val.replace(/\D/g, '');
+
+      // If phone number is provided, it must have exactly 10 digits
+      return digits.length === 10;
+    }, 'Phone number must contain exactly 10 digits')
     .optional()
     .or(z.literal('')),
   organization: z

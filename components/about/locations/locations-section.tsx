@@ -1,9 +1,13 @@
 import Container from '@/components/shared/container';
 import SectionHeader from '@/components/shared/section-header';
 import LocationMap from './location-map';
-import { officeLocations } from './locations-data';
+import { OfficeLocation } from './locations-data';
 
-function LocationsSection() {
+interface LocationsSectionProps {
+  locations: OfficeLocation[];
+}
+
+function LocationsSection({ locations }: LocationsSectionProps) {
   return (
     <section className="my-16 md:my-24">
       <Container>
@@ -23,7 +27,7 @@ function LocationsSection() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {officeLocations.map((location, index) => (
+          {locations.map((location, index) => (
             <LocationMap key={index} location={location} />
           ))}
         </div>

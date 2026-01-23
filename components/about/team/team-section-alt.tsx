@@ -1,9 +1,13 @@
 import Container from '@/components/shared/container';
 import SectionHeader from '@/components/shared/section-header';
 import Image from 'next/image';
-import { teamMembers } from './team-data';
+import { TeamMember } from './team-data';
 
-function TeamSectionAlt() {
+interface TeamSectionAltProps {
+  members: TeamMember[];
+}
+
+function TeamSectionAlt({ members }: TeamSectionAltProps) {
   return (
     <section className="mt-16 md:mt-24">
       <Container>
@@ -27,7 +31,7 @@ function TeamSectionAlt() {
 
         {/* Mobile layout - horizontal cards */}
         <div className="sm:hidden grid grid-cols-1 gap-4">
-          {teamMembers.map((member, index) => (
+          {members.map((member, index) => (
             <div
               key={index}
               className="flex items-center gap-4 bg-gray-50 rounded-xl p-3">
@@ -51,7 +55,7 @@ function TeamSectionAlt() {
 
         {/* Tablet and Desktop layout - vertical cards */}
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
+          {members.map((member, index) => (
             <div key={index} className="text-center">
               <div className="relative aspect-3/4 w-full rounded-2xl overflow-hidden mb-4">
                 <Image

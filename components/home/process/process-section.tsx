@@ -1,9 +1,13 @@
 import Container from '@/components/shared/container';
 import SectionHeader from '@/components/shared/section-header';
 import ProcessStep from './process-step';
-import { processSteps } from './process-data';
+import { ProcessStepData } from './process-step';
 
-function ProcessSection() {
+interface ProcessSectionProps {
+  steps: ProcessStepData[];
+}
+
+function ProcessSection({ steps }: ProcessSectionProps) {
   return (
     <section data-navbar-theme="light" className="mt-16 md:mt-24">
       <Container>
@@ -21,7 +25,7 @@ function ProcessSection() {
 
         {/* Process Steps */}
         <div className="flex flex-col gap-6 sm:gap-16 md:gap-20 lg:gap-24">
-          {processSteps.map((step, index) => (
+          {steps.map((step, index) => (
             <ProcessStep
               key={step.stepNumber}
               data={step}

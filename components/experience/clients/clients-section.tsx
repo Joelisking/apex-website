@@ -1,9 +1,13 @@
 import Container from '@/components/shared/container';
 import SectionHeader from '@/components/shared/section-header';
 import ClientCategoryCard from './client-category-card';
-import { clientCategories } from './clients-data';
+import { ClientCategory } from './clients-data';
 
-function ClientsSection() {
+interface ClientsSectionProps {
+  categories: ClientCategory[];
+}
+
+function ClientsSection({ categories }: ClientsSectionProps) {
   return (
     <section className="py-16 md:py-24">
       <Container>
@@ -20,7 +24,7 @@ function ClientsSection() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {clientCategories.map((category) => (
+          {categories.map((category) => (
             <ClientCategoryCard
               key={category.id}
               category={category}

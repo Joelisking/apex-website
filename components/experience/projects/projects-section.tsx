@@ -1,9 +1,13 @@
 import Container from '@/components/shared/container';
 import SectionHeader from '@/components/shared/section-header';
 import ProjectCategoryCard from './project-category-card';
-import { projectCategories } from './projects-data';
+import { ProjectCategory } from './projects-data';
 
-function ProjectsSection() {
+interface ProjectsSectionProps {
+  categories: ProjectCategory[];
+}
+
+function ProjectsSection({ categories }: ProjectsSectionProps) {
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <Container>
@@ -21,7 +25,7 @@ function ProjectsSection() {
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 items-start">
-          {projectCategories.map((category) => (
+          {categories.map((category) => (
             <ProjectCategoryCard
               key={category.id}
               category={category}

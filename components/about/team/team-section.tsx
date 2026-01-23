@@ -1,9 +1,13 @@
 import Container from '@/components/shared/container';
 import SectionHeader from '@/components/shared/section-header';
 import TeamMemberCard from './team-member-card';
-import { teamMembers } from './team-data';
+import { TeamMember } from './team-data';
 
-function TeamSection() {
+interface TeamSectionProps {
+  members: TeamMember[];
+}
+
+function TeamSection({ members }: TeamSectionProps) {
   return (
     <section className="mt-16 md:mt-24">
       <Container>
@@ -26,7 +30,7 @@ function TeamSection() {
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-          {teamMembers.map((member, index) => (
+          {members.map((member, index) => (
             <TeamMemberCard key={index} member={member} />
           ))}
         </div>

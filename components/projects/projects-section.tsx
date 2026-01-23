@@ -1,8 +1,12 @@
 import Container from '@/components/shared/container';
 import ProjectCard from './project-card';
-import { projects } from './project-data';
+import { Project } from './project-data';
 
-function ProjectsSection() {
+interface ProjectsSectionProps {
+  projects: Project[];
+}
+
+function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <section className="py-16 md:py-24">
       <Container>
